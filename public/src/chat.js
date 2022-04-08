@@ -1,104 +1,61 @@
 const socket = io();
 
-socket.on("productsList", (data) => {
-  if (data.length > 0) {
-    let products = data
-      .map((product) => {
-        return `<tr>
-			<th scope="row"> ${product._id}</th>
-					<td><a href="/${product._id}"> ${product.title} </a></td>
-					<td>${product.price} </td>
-					<td><img src="${product.thumbnail}"  alt="Product" width="75" height="75"> </td>
-					<td>
-						<a href="/edit/${product._id}" class="btn btn-primary fw-bold">
-							Edit
-						</a>
-					</td>
-					<td> <button class="btn btn-danger fw-bold" onclick=sendId("${product._id}")> Delete</button></td>
-					</tr>
-				</tbody>
-				</table>
-				</div>
-				`;
-      })
-      .join("");
-    let productList = document.querySelector("#productList");
-    if (productList) productList.innerHTML = products;
-  } else {
-    let text = `<h3 class="mt-4 text-center text-danger">There aren't products.</h3>`;
-    document.querySelector("table").innerHTML = text;
-  }
+socket.on("renderchat", () => {
+  renderChat();
 });
 
-//Add product
-const add = () => {
-  let product = {
-    title: document.querySelector("#title").value,
-    price: document.querySelector("#price").value,
-    thumbnail: document.querySelector("#thumbnail").value,
+function renderChat() {
+  const tabla = document.getElementById("tBodyChat");
+  const url = "/api/chat";
+
+  /* Funcion fetch para traerme el historial de chat mediante GET */
+  fetch(url)
+    .then((resp) => resp.json())
+    .then(function (data) {
+      /* Todo OK borro el contenido viejo de la tabla y escribo el nuevo */
+      tabla.innerHTML = "";
+      for (const chat of data.messages) {
+        let fila = document.createElement("tr");
+        let aux1 = document.createElement("td");
+        aux1.innerHTML = `<strong><font color="blue">${chat.author}</font></strong>`;
+        let aux2 = document.createElement("td");
+        aux2.innerHTML = `${chat.tipo}`;
+        /* aux2.innerHTML = `<img src = ${chat.tipo} width="40"height="40">`; */
+        let aux3 = document.createElement("td");
+        aux3.innerHTML = `<i><font color="green">${chat.body}</font></i>`;
+        fila.appendChild(aux1);
+        fila.appendChild(aux2);
+        fila.appendChild(aux3);
+        tabla.appendChild(fila);
+      }
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  return false;
+}
+
+function enviarChat(evt) {
+  /* Armando request para la funcion fetch */
+  const url = "/api/chat";
+  let data = {
+    msg: document.getElementById("msg").value,
   };
-  socket.emit("addProduct", product);
-  document.querySelector("#title").value = "";
-  document.querySelector("#price").value = "";
-  document.querySelector("#thumbnail").value = "";
-  return false;
-};
 
-//Edit product
-
-const sendPr = () => {
-  socket.emit("editProduct", {
-    id: document.querySelector("#idPr").value,
-    title: document.querySelector("#titlePr").value,
-    thumbnail: document.querySelector("#thumbnailPr").value,
-    price: document.querySelector("#pricePr").value,
-  });
-  location.href = "/home";
-  return false;
-};
-
-//Delete product
-const sendId = (id) => {
-  fetch("/" + id, {
-    method: "DELETE",
+  const request = {
+    method: "POST",
+    body: JSON.stringify(data),
     headers: {
       "Content-Type": "application/json",
     },
+  };
+  evt.preventDefault();
+  /* Funcion fetch para postear un nuevo mensaje del chat */
+  fetch(url, request).then(function () {
+    /* Todo OK renderizo la tabla para todos los clientes conectados y borro la info del input del mensaje */
+    document.getElementById("msg").value = "";
+    socket.emit("chat", "");
   });
-  socket.emit("deleteProduct");
-};
 
-if (chat) {
-  document.querySelector("#chat").addEventListener("submit", function (e) {
-    e.preventDefault();
-    let chat = {
-      email: document.querySelector("#email").value,
-      name: document.querySelector("#name").value,
-      lastname: document.querySelector("#lastname").value,
-      age: document.querySelector("#age").value,
-      alias: document.querySelector("#alias").value,
-      avatar: document.querySelector("#avatar").value,
-      message: document.querySelector("#message").value,
-      date: `[${moment().format("DD/MM/YYYY HH:mm:ss")}]`,
-    };
-    socket.emit("msn", chat);
-    document.querySelector("#message").value = "";
-  });
-  socket.on("chat", (data) => {
-    let msn = data
-      .map((d) => {
-        return `
-			<ul class="d-flex justify-content-start" style="margin-bottom: 0.1rem" >
-			<div id="chatEmail"class=" bolder text-primary">${d.author.id}</div>
-			<div id="chatDate" class="mx-1" style="color: brown;">${d.date}</div>
-			<div id="chatMsn" class=" text-success fst-italic">${d.message}</div>
-			</ul>`;
-      })
-      .join("");
-    document.querySelector("#messages").innerHTML = msn;
-    socket.on(
-      "email",
-      (email) => (document.querySelector("#email").value = email)
-    );
-  });
+  //return false;
 }
