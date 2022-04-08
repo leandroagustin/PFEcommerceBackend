@@ -1,14 +1,14 @@
 const Daos = require("../models/daos/factoryDb");
-const {darFecha} = require("../helpers/helpersFecha")
+const { darFecha } = require("../helpers/helpersFecha");
 
 //Logs
 const logs = require("../logs/loggers");
-const loggerConsola = logs.getLogger("consola");
+// const loggerConsola = logs.getLogger("consola");
 const loggerError = logs.getLogger("error");
 
 //Clase contenedora de carritos y productos
-let carros = Daos.carritos;
-let productos = Daos.productos;
+let carros = Daos.carritosDao;
+let productos = Daos.productosDao;
 
 const createCarritoService = async () => {
   try {

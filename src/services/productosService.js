@@ -1,16 +1,17 @@
 const Daos = require("../models/daos/factoryDb");
 
 //Clase contenedora de productos
-const productos = Daos.productos;
+const productos = Daos.productosDao;
 
 //Logs
 const logs = require("../logs/loggers");
+const loggerConsola = logs.getLogger("consola");
 const loggerError = logs.getLogger("error");
 
 const getPtosService = async () => {
   try {
     const response = await productos.getAll();
-    if (response) return response;
+    return response;
   } catch (error) {
     throw Error("Error en getPtosService");
   }
@@ -53,7 +54,7 @@ const getPtoCatSevice = async (category) => {
 
 const createPtoService = async (newPto) => {
   try {
-    const addPto = await productos.add(newPto);
+    const addPto = await productos.save(newPto);
     return addPto;
   } catch (error) {
     loggerError.error(error);
@@ -65,10 +66,11 @@ const updatePtoService = async (ptoMod, id) => {
   try {
     //Me fijo si existe el PTO con el ID solicitado
     let flag = await productos.getById(id);
+
     if (Object.keys(flag).length != 0) {
       //Pto con ID solicitado encontrado
       //Modifico el PTO con el ID solicitado, y envio respuesta
-      const pto = await productos.editById(id, ptoMod);
+      const pto = await productos.update(ptoMod);
       return { estado: "ok", producto: pto };
     } else {
       //Pto con ID solicitado NO encontrado, envio error

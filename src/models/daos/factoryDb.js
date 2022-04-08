@@ -28,8 +28,10 @@ switch (contenedor) {
     break;
 }
 
-exports.carritos = carritosDao;
-exports.productos = productosDao;
-exports.ordenes = ordenesDao;
-exports.users = usersDao;
-exports.chats = chatsDao;
+module.exports = { productosDao, carritosDao, ordenesDao, usersDao, chatsDao };
+
+// exports.carritos = carritosDao;
+// exports.productos = productosDao;
+// exports.ordenes = ordenesDao;
+// exports.users = usersDao;
+// exports.chats = chatsDao;

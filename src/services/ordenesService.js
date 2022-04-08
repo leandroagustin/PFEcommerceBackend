@@ -8,9 +8,9 @@ const logs = require("../logs/loggers");
 const loggerError = logs.getLogger("error");
 
 //Clases contenedoras de carritos, ordenes y productos
-let carros = Daos.carritos;
-let ordenes = Daos.ordenes;
-let productos = Daos.productos;
+let carros = Daos.carritosDao;
+let ordenes = Daos.ordenesDao;
+let productos = Daos.productosDao;
 
 const getOrdenesService = async (userId) => {
   try {

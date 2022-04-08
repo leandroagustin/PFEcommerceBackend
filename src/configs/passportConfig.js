@@ -10,14 +10,14 @@ const { darFecha } = require("../helpers/helpersFecha");
 const Daos = require("../models/daos/factoryDb");
 
 //Clase contenedora de users, carritos y chats
-let carros = Daos.carritos;
-let users = Daos.users;
-let chats = Daos.chats;
+let carros = Daos.carritosDao;
+let users = Daos.usersDao;
+let chats = Daos.chatsDao;
 
 //Logs
 const logs = require("../logs/loggers");
 const loggerConsola = logs.getLogger("consola");
-const loggerError = logs.getLogger("error");
+// const loggerError = logs.getLogger("error");
 
 //Sign up
 passport.use(

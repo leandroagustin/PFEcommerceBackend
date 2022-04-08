@@ -216,7 +216,7 @@ function editarProducto(evt) {
     stock: document.getElementById("stockM").value,
   };
   let request = {
-    method: "POST",
+    method: "PUT",
     body: JSON.stringify(data),
     headers: {
       "Content-Type": "application/json",

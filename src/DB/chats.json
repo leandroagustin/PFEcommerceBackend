@@ -1,0 +1,22 @@
+[{
+  "_id": {
+    "$oid": "6228a9cb74242aea95fa81d1"
+  },
+  "timestamp": "9/3 - 10:21:15",
+  "messages": [],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6228aa5574242aea95fa81db"
+  },
+  "timestamp": "9/3 - 10:23:33",
+  "messages": [],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "621fd8e0dd30c9a63c74ea95"
+  },
+  "timestamp": "2/3 - 17:51:44",
+  "messages": [],
+  "__v": 0
+}]

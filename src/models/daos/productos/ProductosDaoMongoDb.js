@@ -7,13 +7,13 @@ class ProductosDaoMongoDb extends ContenedorMongoDB {
     super(
       "productos",
       new Schema({
-        timestamp: { type: String, required: true },
-        nombre: { type: String, required: true },
-        descripcion: { type: String, required: true },
-        categoria: { type: String, required: true },
-        thumbail: { type: String, required: true },
-        precio: { type: Number, required: true },
-        stock: { type: Number, required: true },
+        timestamp: { type: String },
+        nombre: { type: String },
+        descripcion: { type: String },
+        categoria: { type: String },
+        thumbail: { type: String },
+        precio: { type: Number },
+        stock: { type: Number },
       })
     );
   }

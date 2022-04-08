@@ -2,8 +2,8 @@ const { darFecha } = require("../helpers/helpersFecha");
 const Daos = require("../models/daos/factoryDb");
 
 //Clase contenedora de chats y usuarios
-let chats = Daos.chats;
-let users = Daos.users;
+let chats = Daos.chatsDao;
+let users = Daos.usersDao;
 
 //Logs
 const logs = require("../logs/loggers");
