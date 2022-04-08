@@ -4,9 +4,8 @@ const session = require("express-session");
 const passport = require("passport");
 const middlewares = require("./src/middlewares/middlewares");
 
-//Importar variables de entornos locales
-require("dotenv").config({ path: ".env" });
-// console.log(process.env.MONGODB_URI);
+const dotenv = require("dotenv").config();
+
 //compression
 const cluster = require("cluster");
 

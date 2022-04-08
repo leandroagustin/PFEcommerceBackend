@@ -1,8 +1,5 @@
 const mongoose = require("mongoose");
-const path = require("path");
-//Importar variables de entornos locales
-require("dotenv").config({ path: ".env" });
-// console.log(process.env.MONGODB_URI);
+
 const {
   asPOJO,
   renameField,
@@ -15,8 +12,6 @@ const loggerConsola = logs.getLogger("consola");
 const loggerError = logs.getLogger("error");
 
 //Conexion a la base de datos
-
-// "mongodb+srv://Leandro:123@clusterdemo.eullt.mongodb.net/test"
 
 const conexion = `${process.env.MONGODB_URI}`;
 mongoose.connect(conexion);
