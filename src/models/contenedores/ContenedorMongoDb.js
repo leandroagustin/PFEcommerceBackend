@@ -27,14 +27,6 @@ mongoose.connection.on("error", () => {
   loggerError.error("Error al conectarse a la base de datos!!");
 });
 
-// mongoose.connect(process.env.MONGODB_URI);
-// mongoose.connection.on("open", () => {
-//   loggerConsola.info("Base de datos conectada con exito!!");
-// });
-// mongoose.connection.on("error", () => {
-//   loggerError.error("Error al conectarse a la base de datos!!");
-// });
-
 //Comienzo clase Contenedor
 class ContenedorMongoDB {
   constructor(name, esquema) {
