@@ -5,7 +5,6 @@ const productos = Daos.productosDao;
 
 //Logs
 const logs = require("../logs/loggers");
-const loggerConsola = logs.getLogger("consola");
 const loggerError = logs.getLogger("error");
 
 const getPtosService = async () => {

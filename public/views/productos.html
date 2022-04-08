@@ -12,14 +12,14 @@
     crossorigin="anonymous"
   />
 </head>
-<body class="m-auto">  
+<body class="m-0">  
     <!-- PRODUCTOS -->
     <!-- MODAL EDITAR PRODUCTO -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Edit producto</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Editar producto</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -67,9 +67,9 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form onsubmit="/*return*/ borrarProducto()" name="formulario1">
+                <form onsubmit="borrarProducto()" name="formulario1">
                     <input id="idMB" name="prodId" type="hidden" value="">
-                    Esta seguro que desea eliminar el producto?
+                    Seguro que quiere eliminar el producto?
             </div>
             <div class="modal-footer">
                 <input type="submit" value="Eliminar" class="btn btn-danger" data-bs-dismiss="modal"/> 
@@ -82,9 +82,9 @@
 
     <!-- TITULO Y NAVBAR-->
     <div class="container" style="margin-top: 30px;"> 
-        <h3 class="mt-10 text-primary">Proyecto Final</h3>
+        <h3 class="mt-10 text-dark h3">Proyecto Final</h3>
         <!-- NAVBAR -->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <nav class="navbar m-0 navbar-expand-lg navbar-dark bg-dark">
             <button
             class="navbar-toggler"
             type="button"
@@ -104,14 +104,14 @@
             <div class="collapse navbar-collapse">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home</a>
+                    <a class="nav-link" href="#">Inicio</a>
                 </li>
                 <li>
                     <li class="nav-item active">
                         <a class="nav-link" href="/chatprivado.html">Chat Con Admin</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="/listaOrdenes.html">Compras</a>
+                        <a class="nav-link" href="/listaOrdenes.html">Mis Compras</a>
                     </li>
                 <li>
                 <button
@@ -125,9 +125,9 @@
             </div>
         </nav>
         <!-- FORMULARIO PTO -->
-        <h4 class="mt-10 text-primary">Formulario para agregar nuevo producto</h4>
+        <h4 class="mt-10 text-dark">Agregar un nuevo producto aqui</h4>
         <div id="formularioPtos">
-        <form onsubmit="/*return*/ agregarPto()" name="formulario1">
+        <form onsubmit="agregarPto()" name="formulario1">
             <div class="mb-3">
                 <label for="nombre" class="form-label">Nombre</label>
                 <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre del producto" >
@@ -162,7 +162,7 @@
 
     <!-- TABLA PRODUCTOS -->
     <div class="container" style="margin-top: 30px;">
-        <h4 class="mt-10 text-primary">Estos son todos los productos</h4>
+        <h4 class="mt-10 text-dark">Estos son todos los productos</h4>
         <div class="table-responsive" style="text-align: center;">
           <table class="table table-dark" id="tabla">
             <thead>
@@ -185,7 +185,7 @@
 
     <!-- CARRITO -->
     <div class="container" style="margin-top: 30px;"> 
-        <h4 class="mt-10 text-primary">Carrito</h4>
+        <h4 class="mt-10 text-dark">Carrito</h4>
         <!-- TABLA CARRITO -->
         <div class="mb-3">
             <div class="table-responsive" style="text-align: center;">
@@ -197,7 +197,7 @@
                   </tbody>
                 </table>  
             </div>
-            <a a href="/ordenes.html" class="btn btn-success">Ir a pagar</a>
+            <a a href="/ordenes.html" class="btn" style="background-color: rgb(253, 177, 13)">Ir a pagar</a>
         </div>
     </div>   
 

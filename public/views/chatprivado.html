@@ -12,12 +12,12 @@
       crossorigin="anonymous"
     />
   </head>
-  <body onload="main()">
+  <body class="m-0" onload="main()">
     <!-- TITULO Y NAVBAR-->
     <div class="container" style="margin-top: 30px">
-      <h3 class="mt-10 text-primary">Proyecto Final</h3>
+      <h3 class="mt-10 text-dark">Proyecto Final</h3>
       <!-- NAVBAR -->
-      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <nav class="navbar m-0 navbar-expand-lg navbar-dark bg-dark">
         <button
           class="navbar-toggler"
           type="button"
@@ -37,24 +37,20 @@
         <div class="collapse navbar-collapse">
           <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item active">
-              <a class="nav-link" href="/index.html">Home</a>
-            </li>
-            <li></li>
-            <li class="nav-item active">
-              <a class="nav-link" href="/chat.html">Chat</a>
+              <a class="nav-link" href="/index.html">Inicio</a>
             </li>
             <li class="nav-item active">
               <a class="nav-link" href="#">Chat Con Admin</a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="/listaOrdenes.html">Compras</a>
+              <a class="nav-link" href="/listaOrdenes.html">Mis Compras</a>
             </li>
             <li>
               <button
                 onclick="window.location.href='/logout'"
                 class="btn btn-warning"
               >
-                Deslogear
+                Cerrar sesion
               </button>
             </li>
           </ul>
@@ -63,12 +59,16 @@
     </div>
 
     <div class="container" style="margin-top: 30px">
-      <h3 class="mt-10 text-primary">Chat</h3>
+      <h3 class="mt-10 text-dark">Chat</h3>
       <!-- TABLA CHAT -->
       <div class="mb-3" id="textChat">
         <h4 class="mt-10 text-primary" id="porcentaje"></h4>
         <div class="table-responsive">
-          <table class="table" id="tablaChat">
+          <table
+            class="table"
+            id="tablaChat"
+            style="background-color: rgb(253, 177, 13)"
+          >
             <thead>
               <tr>
                 <th>Usuario</th>
@@ -92,10 +92,13 @@
           />
         </div>
         <div class="mb-3">
-          <button onclick="enviarChat(event);" class="btn btn-primary">
+          <button
+            onclick="enviarChat(event);"
+            class="btn"
+            style="background-color: rgb(253, 177, 13)"
+          >
             Enviar
           </button>
-          <!-- <input type="submit" value="Enviar mensaje" class="btn btn-primary" /> -->
         </div>
       </form>
     </div>

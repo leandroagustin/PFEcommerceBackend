@@ -73,7 +73,7 @@ passport.use(
       //Envio de mail al administrador de la pagina
       const mailOptions = {
         from: "Desde Servidor NODE JS",
-        to: "abbey.hintz4@ethereal.email",
+        to: `${process.env.NODEMAILER_USER}`,
         subject: "Nuevo registro!",
         html: "Datos del nuevo usuario <br>" + JSON.stringify(userNew),
       };

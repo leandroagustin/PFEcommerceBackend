@@ -9,7 +9,7 @@ let users = Daos.usersDao;
 const logs = require("../logs/loggers");
 const loggerError = logs.getLogger("error");
 
-// Chat general
+// Chat
 const idChatGral = "621fd8e0dd30c9a63c74ea95";
 
 const getPublicChatService = async () => {

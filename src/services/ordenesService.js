@@ -1,6 +1,6 @@
 const Daos = require("../models/daos/factoryDb");
 const nodemailerConfig = require("../configs/nodemailerConfig");
-const twilioConfig = require("../configs/twilioConfig");
+// const twilioConfig = require("../configs/twilioConfig");
 const { darFecha } = require("../helpers/helpersFecha");
 
 //Logs
@@ -63,24 +63,24 @@ const createOrderService = async (idCarrito, idUser, dir, email) => {
       //Envio mail al administrador
       const mailOptions = {
         from: "Servidor node.js",
-        to: "leandromena_94@hotmail.com",
+        to: `${process.env.NODEMAILER_USER}`,
         subject: "Nuevo pedido de " + email,
         html: "Productos solicitados <br>" + JSON.stringify(ptosFinal, null, 2),
       };
       const info = await nodemailerConfig.sendMail(mailOptions);
       //Envio whatsapp al administrador
-      const whpoptions = {
-        body: "Productos solicitados: " + JSON.stringify(ptosFinal, null, 2),
-        from: "whatsapp:+18606891892",
-        to: "whatsapp:+5492804568365",
-      };
-      const message = await twilioConfig.messages.create(whpoptions);
-      //Envio de mensaje al cliente
-      const sms = await twilioConfig.messages.create({
-        body: "Gracias por su compra, estamos procesando su pedido",
-        from: "+19383333990",
-        to: "+542996301879", //Por ahora este numero para que funcione en twilio. Dsps deberia ser el telefono del user
-      });
+      // const whpoptions = {
+      //   body: "Productos solicitados: " + JSON.stringify(ptosFinal, null, 2),
+      //   from: "whatsapp:+18606891892",
+      //   to: `whatsapp:+5492804568365`,
+      // };
+      // const message = await twilioConfig.messages.create(whpoptions);
+      // //Envio de mensaje al cliente
+      // const sms = await twilioConfig.messages.create({
+      //   body: "Gracias por su compra, estamos procesando su pedido",
+      //   from: "+18606891892",
+      //   to: `+5492804568365`, //Numero del cliente
+      // });
 
       /*****Fin de Envio de mensajes *****/
 

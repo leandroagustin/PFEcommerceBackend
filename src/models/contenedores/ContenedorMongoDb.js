@@ -18,7 +18,7 @@ const loggerError = logs.getLogger("error");
 
 // "mongodb+srv://Leandro:123@clusterdemo.eullt.mongodb.net/test"
 
-const conexion = process.env.MONGODB_URI;
+const conexion = `${process.env.MONGODB_URI}`;
 mongoose.connect(conexion);
 mongoose.connection.on("open", () => {
   loggerConsola.info("Base de datos conectada con exito!!");

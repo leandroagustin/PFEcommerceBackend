@@ -11,7 +11,7 @@ function renderOrdenes() {
   fetch(url)
     .then((resp) => resp.json())
     .then(function (data) {
-      /* Todo OK borro el contenido viejo de la tabla y escribo el nuevo */
+      /* Todo ok borro el contenido viejo de la tabla y escribo el nuevo */
       tabla.innerHTML = "";
       console.log(data);
       for (const orden of data) {

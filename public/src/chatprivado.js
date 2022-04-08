@@ -21,12 +21,11 @@ function renderChat() {
       for (const chat of data.messages) {
         let fila = document.createElement("tr");
         let aux1 = document.createElement("td");
-        aux1.innerHTML = `<strong><font color="blue">${chat.author}</font></strong>`;
+        aux1.innerHTML = `<strong><font>${chat.author}</font></strong>`;
         let aux2 = document.createElement("td");
         aux2.innerHTML = `${chat.tipo}`;
-        /* aux2.innerHTML = `<img src = ${chat.tipo} width="40"height="40">`; */
         let aux3 = document.createElement("td");
-        aux3.innerHTML = `<i><font color="green">${chat.body}</font></i>`;
+        aux3.innerHTML = `<i><font>${chat.body}</font></i>`;
         fila.appendChild(aux1);
         fila.appendChild(aux2);
         fila.appendChild(aux3);

@@ -49,9 +49,9 @@ if (cluster.isMaster) {
   app.use(
     session({
       store: MongoStore.create({
-        mongoUrl: process.env.MONGODB_URI,
+        mongoUrl: `${process.env.MONGODB_URI}`,
       }),
-      secret: "shhh!",
+      secret: `${process.env.SESSION_SECRET}`,
       resave: false,
       saveUninitialized: false,
       rolling: true,

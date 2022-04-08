@@ -6,6 +6,9 @@ const {
   postPrivateMessageService,
 } = require("../services/chatService");
 
+//nodemailer
+const nodemailerConfig = require("../configs/nodemailerConfig");
+
 //Logs
 const logs = require("../logs/loggers");
 const loggerError = logs.getLogger("error");
@@ -96,6 +99,14 @@ const postPrivateMessage = async (req, res) => {
       idChat,
       emailUser
     );
+    const mailOptions = {
+      from: "Desde Servidor NODE JS",
+      to: `${process.env.NODEMAILER_USER}`,
+      subject: "Nueva Consulta!",
+      html: "Datos del nuevo usuario <br>" + JSON.stringify(response),
+    };
+    await nodemailerConfig.sendMail(mailOptions);
+
     res.status(201).send(response);
   } catch (error) {
     loggerError.error(error);
