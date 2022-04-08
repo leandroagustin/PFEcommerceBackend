@@ -1,11 +1,13 @@
 const mongoose = require("mongoose");
+const path = require("path");
+//Importar variables de entornos locales
+require("dotenv").config({ path: ".env" });
+// console.log(process.env.MONGODB_URI);
 const {
   asPOJO,
   renameField,
   removeField,
 } = require("../../helpers/helpersMongo");
-
-require("dotenv").config();
 
 //Logs
 const logs = require("../../logs/loggers");
@@ -16,17 +18,14 @@ const loggerError = logs.getLogger("error");
 
 // "mongodb+srv://Leandro:123@clusterdemo.eullt.mongodb.net/test"
 
-const connectDb = () => {
-  const conexion = process.env.MONGODB_URI;
-  mongoose.connect(conexion);
-  mongoose.connection.on("open", () => {
-    loggerConsola.info("Base de datos conectada con exito!!");
-  });
-  mongoose.connection.on("error", () => {
-    loggerError.error("Error al conectarse a la base de datos!!");
-  });
-};
-connectDb();
+const conexion = process.env.MONGODB_URI;
+mongoose.connect(conexion);
+mongoose.connection.on("open", () => {
+  loggerConsola.info("Base de datos conectada con exito!!");
+});
+mongoose.connection.on("error", () => {
+  loggerError.error("Error al conectarse a la base de datos!!");
+});
 
 // mongoose.connect(process.env.MONGODB_URI);
 // mongoose.connection.on("open", () => {
