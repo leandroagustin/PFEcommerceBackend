@@ -12,9 +12,7 @@ const loggerConsola = logs.getLogger("consola");
 const loggerError = logs.getLogger("error");
 
 //Conexion a la base de datos
-
-const conexion = `${process.env.MONGODB_URI}`;
-mongoose.connect(conexion);
+mongoose.connect(`${process.env.MONGODB_URI}`);
 mongoose.connection.on("open", () => {
   loggerConsola.info("Base de datos conectada con exito!!");
 });
